@@ -12,7 +12,15 @@ base_url = os.getenv("ISE_URL")
 api = IdentityServicesEngineAPI(
     username=admin, password=pw, base_url=base_url, version="3.0.0", verify=False)
 
-resp = api.allowed_protocols.get_all()
 
+print("=" * 50)
+# Get Admin Users
+search_result = api.admin_user.get_all()
+ppr(search_result.response)
 
-ppr(resp)
+print("=" * 50)
+
+# Get All TACACS Users
+search_result = api.tacacs_profile.get_all()
+ppr(search_result.response)
+print("=" * 50)
